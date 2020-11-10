@@ -3,17 +3,59 @@
 	<head th:replace="fragments :: headerfiles"></head> 
 
 	<body>
-	
+
 		<div th:replace="fragments :: headerbodies"></div>
 		
-		<div class="container">
-		  <h1>Page d'accueil</h1>
-		  <p th:utext="${message}">..!..</p>
-		  <a th:href="@{/associesList}">Liste des associés</a>  
+		<div class="container" style="min-height: 80vh;">
+
+			<span th:text="${errorMessage}">userName</span>
+
+			<div th:each="AlerteLine : ${alertes_tables}" class="alert alert-warning" role="alert">
+				<span th:utext="${AlerteLine.contenuCell}"></span>
+			</div>
+
+
+			<div class="row">
+				<h1>INS'Access</h1>
+
+			</div>
+
+			<img th:src="@{images/planinsa.jpg}" src="../static/images/planinsa.jpg" alt="Plan de l'insa" width="100%">
+
+			<!--<p th:utext="${message}">..!..</p>
+            <a th:href="@{/associesList}">Liste des associés</a>-->
+
+			<!-- Modal -->
+			<form th:action="@{/ajouterTravaux}" method="POST" class="modal fade"  data-backdrop="static" id="modaltravaux" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Indiquez des travaux en cours</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">/!\</span>
+								</div>
+								<input th:field="${travauxForm.contenu}"type="text" class="form-control" placeholder="Eau renversée en MAHR02" aria-label="Eau renversée en MAHR02" aria-describedby="basic-addon1">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+							<button type="submit" class="btn btn-warning btn-primary">Signaler</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<button data-toggle="modal" data-target="#modaltravaux" type="button" style="position: fixed; bottom: 10%; right : 10%;" class=" btn btn-warning btn-primary btn-lg">Signaler travaux</button>
+
 		</div> <!-- enf of page container -->
 
 		<div th:replace="fragments :: footerbodies"></div>
-
 		
 	</body>
     

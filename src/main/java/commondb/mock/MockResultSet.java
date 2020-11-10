@@ -218,12 +218,19 @@ public class MockResultSet implements ResultSet {
 
 	@Override
 	public boolean getBoolean(int columnIndex) throws SQLException {
-		throw new UnsupportedOperationException("to be implemented");
+		String value = getValue(columnIndex);
+
+		try {
+			boolean bool = Boolean.valueOf(value);
+			return bool;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean getBoolean(String columnLabel) throws SQLException {
-		throw new UnsupportedOperationException("to be implemented");
+		return getBoolean(getColumnIndex(columnLabel));
 	}
 
 	@Override

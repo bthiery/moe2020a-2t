@@ -84,16 +84,7 @@ public class HelloController {
  
     // @Value("${error.message}")
     private String errorMessage = "ca va mal !" ;
- 
-    // @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET) // 2019
-	@GetMapping( { "/", "/index" } ) // 2020
-    public String index(Model model) {
- 
-        model.addAttribute("message", message);
- 
-        return "index";
-    }
- 
+
     // @RequestMapping(value = { "/associesList" }, method = RequestMethod.GET)
 	@GetMapping( { "/associesList" } )
     public String associesList(Model model) throws Exception {

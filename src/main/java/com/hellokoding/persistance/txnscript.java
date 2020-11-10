@@ -72,7 +72,6 @@ public class txnscript {
 	return rs ;
   }
 
-
   public ResultSet remonterEnrAssocies ( ) throws Exception
   {
 	 /*
@@ -102,6 +101,26 @@ public class txnscript {
 
    	ResultSet rs = new MockResultSet( mockHeader , mockLine1 , mockLine2 ,  mockLine3 ); 
 	return rs ;
+  }
+
+  public ResultSet remonterEnRAlertes() throws Exception {
+
+		String mockHeader =  "\"id\",\"type\",\"contenu\",\"actif\"\r" ;
+		String mockLine1  = "18,\"Travaux\",\"Voiture échouée sur l'A13 empêche accès en MAHR02\",true" ;
+		String mockLine2  = "19,\"Travaux\",\"Explosion dynamite bureau Malandain\",true" ;
+
+	  ResultSet rsTestLocal = new MockResultSet( mockHeader , mockLine1 , mockLine2 );
+
+	  logger.info( "remonterEnRAlertes : rs initialized" ) ;
+	  while ( rsTestLocal.next() )
+	  {
+		  String contenu = rsTestLocal.getString ( "contenu" ) ;
+		  logger.info( "remonterEnRAlertes contenu : " + contenu);
+	  }
+	  rsTestLocal.close() ;
+
+	  ResultSet rs = new MockResultSet( mockHeader , mockLine1 , mockLine2 );
+	  return rs ;
   }
 
 

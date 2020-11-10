@@ -10,7 +10,7 @@ public class AlerteForm {
     }
 
     public void setContenu(String contenu) {
-        this.firstName = contenu;
+        this.contenu = contenu;
     }
 
 }

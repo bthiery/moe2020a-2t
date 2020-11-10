@@ -7,7 +7,7 @@ public class AlerteLine {
 
     private String typeCell;
     private String contenuCell;
-    private String actifCell;
+    private Boolean actifCell;
 
     public AlerteLine() {
 
